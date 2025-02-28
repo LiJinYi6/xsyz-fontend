@@ -4,7 +4,10 @@
             <SvgIcon name="xinshengqiang" width="32px" height="32px"></SvgIcon>
             <p class="title">心声驿站</p>
         </div>
-        <div class="menu"></div>
+        <div class="menu">
+            <JYButton size="base" nom="top-primary">留言墙</JYButton>
+            <JYButton size="base" nom="top-secondary">照片墙</JYButton>
+        </div>
         <div class="user">
             <div class="userAvatar"></div>
         </div>
@@ -13,6 +16,7 @@
 
 <script setup lang="ts">
 import SvgIcon from '@/components/SvgIcon.vue'
+import JYButton from './JYButton.vue';
 </script>
 
 <style scoped lang="less">
@@ -46,9 +50,8 @@ import SvgIcon from '@/components/SvgIcon.vue'
         }
     }
     .menu{
-        width: 40px;
-        height: 40px;
-        background: red;
+       
+        
     }
     .user{
         width: 300px;
