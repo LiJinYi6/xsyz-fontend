@@ -1,5 +1,5 @@
 import { fileURLToPath, URL } from 'node:url'
-
+import {viteMockServe} from 'vite-plugin-mock'
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import vueDevTools from 'vite-plugin-vue-devtools'
@@ -19,6 +19,7 @@ export default defineConfig({
       // svg组件名称
       symbolId: 'icon-[name]',
     }),
+    viteMockServe()
   ],
   //解析less
   css: {

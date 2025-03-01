@@ -1,7 +1,14 @@
 <template>
-    <svg :class="name" :width="width" :height="height" :viewBox="viewBox" :style="{width,height}">
+    <svg :class="name" 
+    :width="width" 
+    :height="height" 
+    :viewBox="viewBox" 
+    :fill="fill"
+    :style="{width,height,fill}"
+    @click="$emit('click')">
       <use :href="`#icon-${name}`" />
     </svg>
+    <slot></slot>
   </template>
   
   <script setup>
@@ -23,6 +30,10 @@
       type: String,
       default: '0 0 1024 1024',
     },
+    fill:{
+      type: String,
+      default: 'currentColor',
+    }
   })
   
   </script>

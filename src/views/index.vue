@@ -1,6 +1,7 @@
 <template>
     <div class="homeContainer">
         <TopBar></TopBar>
+        <routerView></routerView>
     </div>
 </template>
 
@@ -12,7 +13,6 @@ import TopBar from '@/components/TopBar.vue'
 
 .homeContainer {
     font-size:@font-size-14;
-    z-index: -1;
     width: 100vw;
     height: 100vh;
     background: url('../assets/images/wall-bg.jpg');
