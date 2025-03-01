@@ -13,9 +13,12 @@
             :key="index">{{ item }}</p>
         </div>
         <div class="notecard-list" >
-            <template v-for="(item, index) in noteList " :key="item.id">
+            <template  v-for="(item, index) in noteList " :key="item.id">
                 <NoteCard :note="item" ></NoteCard>
             </template>
+        </div>
+        <div class="add">
+            <SvgIcon name="tianjia" :fill="true?'red':''" height="35px" width="35px"></SvgIcon>
         </div>
     </div>
 </template>
@@ -24,6 +27,7 @@
 import { label,wallType} from '@/utils/data';
 import { onMounted, reactive, ref } from 'vue';
 import NoteCard from '@/components/NoteCard.vue'
+import SvgIcon from '@/components/SvgIcon.vue';
 import { apiGetMessage } from '@/api/api';
 let id=ref(0)
 let selectNum=ref(label[id.value].length)
@@ -87,13 +91,23 @@ onMounted(async ()=>{
         }
     }
     .notecard-list{
-        // margin:8px ;
-        margin:0 5px;
-        width: 1480px;
-        height: 500px;
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(150px, 300px));
+        justify-content: center; /* 水平居中 */
+        align-items: flex-start; /* 垂直对齐 */
+        margin:0 auto;
+    }
+    .add{
+        width: 56px;
+        height: 56px;
+        position: fixed;
+        background-color: @gray-9;
+        box-shadow: 0px 4px 8px 0px rgba(0, 0, 0, 0.08);
+        border-radius: 28px;
+        bottom: 30px;
+        right: 30px;
         display: flex;
-        justify-content: flex-start;
-        flex-wrap: wrap;
+        justify-content: center;
         align-items: center;
     }
 }

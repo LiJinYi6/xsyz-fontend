@@ -28,9 +28,6 @@ const handleLike=()=>{
     isLike.value=!isLike.value
     console.log(isLike.value)
 }
-onMounted(()=>{
-    console.log('iadjf')
-})
 </script>
 
 <style scoped lang="less">

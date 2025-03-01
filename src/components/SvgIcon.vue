@@ -1,9 +1,6 @@
 <template>
     <svg :class="name" 
-    :width="width" 
-    :height="height" 
     :viewBox="viewBox" 
-    :fill="fill"
     :style="{width,height,fill}"
     @click="$emit('click')">
       <use :href="`#icon-${name}`" />
@@ -39,8 +36,6 @@
   </script>
   
   <style scoped>
-  svg {
-    fill: currentColor;
-  }
+
   </style>
   

@@ -21,6 +21,7 @@ import JYButton from './JYButton.vue';
 
 <style scoped lang="less">
 .topContainer {
+    z-index: 10;
     width: 100%;
     height: 52px;
     background: rgba(255,255,255,0.8);

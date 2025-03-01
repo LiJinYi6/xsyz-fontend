@@ -2,9 +2,14 @@
 
 </script>
 <template>
-  <RouterView />
+  <div class="container">
+    <RouterView />
+  </div>
 </template>
 
-<style scoped>
-
+<style scoped lang="less">
+.container{
+  width: 100%;
+  height: 100%;
+}
 </style>
