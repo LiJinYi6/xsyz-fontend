@@ -13,7 +13,5 @@ import TopBar from '@/components/TopBar.vue'
 
 .homeContainer {
     font-size:@font-size-14;
-    width: 100vw;
-    height: 100vh;
 }
 </style>
