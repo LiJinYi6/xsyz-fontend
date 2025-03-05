@@ -1,7 +1,7 @@
 <template>
     <div class="message-wall">
-        <p class="title">{{ wallType[id].title }}</p>
-        <p class="slogan">{{ wallType[id].slogan }}</p>
+        <p class="title">{{ useWall.wall.title }}</p>
+        <p class="slogan">{{ useWall.wall.slogan }}</p>
         <div class="label">
             <p @click="handleSelect(label[id].length)" 
             class="label-list" 
@@ -12,35 +12,49 @@
             class="label-list" v-for="(item, index) in label[id]" 
             :key="index">{{ item }}</p>
         </div>
-        <div class="notecard-list" >
-            <template  v-for="(item, index) in noteList " :key="item.id">
+        <div class="notecard-list" v-if="id==0" >
+            <template  v-for="item in noteList " :key="item.id">
                 <NoteCard :note="item" ></NoteCard>
             </template>
         </div>
         <div class="add">
-            <SvgIcon name="tianjia" :fill="true?'red':''" height="35px" width="35px"></SvgIcon>
+            <SvgIcon @click.native="handleAdd()" name="tianjia" :fill="true?'red':''" height="35px" width="35px"></SvgIcon>
         </div>
+        <JYPagination :totals="8" :page-size="8"></JYPagination>
+        <JYDrawer :isVisible="isVisible" @close-drawer="isVisible=false">
+            <NewCard></NewCard>
+        </JYDrawer>
     </div>
 </template>
 
 <script setup lang="ts">
 import { label,wallType} from '@/utils/data';
 import { onMounted, reactive, ref } from 'vue';
+import JYDrawer from '@/components/JYDrawer.vue';
 import NoteCard from '@/components/NoteCard.vue'
 import SvgIcon from '@/components/SvgIcon.vue';
+import NewCard from '@/components/NewCard.vue';
 import { apiGetMessage } from '@/api/api';
-let id=ref(0)
+import { useWallStore } from '@/stores/wall';
+import JYPagination from '@/components/JYPagination.vue';
+const useWall=useWallStore()
+let id=ref(useWall.wall.id)
 let selectNum=ref(label[id.value].length)
 let handleSelect=(index:number)=>{
     selectNum.value=index
 }
-let noteList=reactive([])
+let noteList=reactive<Array<object>>([])
 const  getMessages=async ()=>{
     let res:any=await apiGetMessage()
     console.log(res)
     noteList=res.data.NoteList
 }
-onMounted(async ()=>{
+let isVisible=ref<boolean>(false)
+const handleAdd=()=>{
+    console.log('触发')
+    isVisible.value=true
+}
+onMounted(()=>{
     getMessages()
 })
 </script>
@@ -48,11 +62,10 @@ onMounted(async ()=>{
 <style scoped lang="less">
 .message-wall{
     min-height: 700px;
-    padding-top: 52px;
+    padding-top: 30px;
     // display: flex;
     // flex-direction: column;
     // align-items: center;
-    
     .title{
         padding-top: 40px;
         padding-bottom: 8px;
@@ -60,10 +73,12 @@ onMounted(async ()=>{
         color:@gray-8;
         text-align: center;
         font-weight: 600;
+        transition: all 0.3s ease-in-out;
     }
     .slogan{
         color:@gray-7;
         text-align: center;
+        transition: all 0.3s ease-in-out;
     }
     .label{
         display: flex;

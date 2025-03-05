@@ -7,7 +7,7 @@ export default [{
     return {
       code: 200,
       data: {
-        'NoteList|15': [{
+        'NoteList|7': [{
         'id|+1': 1,
         'content|1-24': '@paragraph',
         'date':'@date',

@@ -1,8 +1,9 @@
-<template>
+<template >
     <svg :class="name" 
     :viewBox="viewBox" 
     :style="{width,height,fill}"
-    @click="$emit('click')">
+    @click="$emit('click')"
+    >
       <use :href="`#icon-${name}`" />
     </svg>
     <slot></slot>

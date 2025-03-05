@@ -55,4 +55,13 @@ let props=defineProps({
     background: @gray-0;
     color: @gray-9;
 }
+.pagination{
+    background: @gray-0;
+    color: @gray-9;
+    border: 1px solid @gray-9;
+    width: 70px;
+    height: 24px;
+    padding: 0 10px;
+    border-radius: 5px;
+}
 </style>

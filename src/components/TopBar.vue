@@ -5,8 +5,8 @@
             <p class="title">心声驿站</p>
         </div>
         <div class="menu">
-            <JYButton size="base" nom="top-primary">留言墙</JYButton>
-            <JYButton size="base" nom="top-secondary">照片墙</JYButton>
+            <JYButton @click="handleClick(0)" size="base" :nom="wallStore.wall.id==0?'top-primary':'top-secondary'">留言墙</JYButton>
+            <JYButton @click="handleClick(1)" size="base" :nom="wallStore.wall.id?'top-primary':'top-secondary'">照片墙</JYButton>
         </div>
         <div class="user">
             <div class="userAvatar"></div>
@@ -17,6 +17,11 @@
 <script setup lang="ts">
 import SvgIcon from '@/components/SvgIcon.vue'
 import JYButton from './JYButton.vue';
+import { useWallStore } from '@/stores/wall';
+const wallStore = useWallStore()
+const handleClick = (data:number)=>{
+    wallStore.wallChange(data)
+}
 </script>
 
 <style scoped lang="less">
@@ -50,10 +55,7 @@ import JYButton from './JYButton.vue';
             text-align: justify;
         }
     }
-    .menu{
-       
-        
-    }
+  
     .user{
         width: 300px;
         display: flex;
