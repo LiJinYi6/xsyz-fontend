@@ -9,11 +9,16 @@
                 <slot class="slot">
                 </slot>
             </div>
+            <div class="drawer-foot">
+              <JYButton size="smaller" nom="secondary">取消</JYButton>
+              <JYButton size="bigger" nom="primary">发布</JYButton>
+            </div>
         </div>
      </transition>
 </template>
 
 <script setup lang="ts">
+import JYButton from './JYButton.vue';
 import SvgIcon from './SvgIcon.vue';
 import { defineProps } from 'vue';
 import { useWallStore } from '@/stores/wall';
@@ -60,9 +65,9 @@ defineProps({
 
 }
 .jy-drawer{
-    background:rgba(255,255,255,0.3);
+    background:rgba(255,255,255,0.8);
     width: 360px;
-    height: 100%;
+    height: calc(100vh - 52px);
     position: fixed;
     top: 52px;
     right: 0;
@@ -91,8 +96,17 @@ defineProps({
         height: calc(100% - 35px);
         
     }
-    .slot{
-        height: 1200px;
+    .drawer-foot{
+      position: relative;
+      bottom: 20px;
+      right: 0;
+      z-index: 10;
+      display: flex;
+      justify-content: space-between;
+      
+      width: 100%;
+      align-items: center;
+      
     }
 }
 </style>

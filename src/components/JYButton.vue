@@ -3,6 +3,7 @@
 </template>
 
 <script setup lang="ts">
+import {defineProps} from "vue";
 let props=defineProps({
     size:{
         type:String,
